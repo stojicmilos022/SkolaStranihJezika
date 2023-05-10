@@ -6,8 +6,8 @@ create table Kurs
 (
 id int primary key identity(1,1),
 naziv nvarchar(50) not null,
-brojUcenikaTrenutno int,
-brojUcenikaMaks int,
+BrUceTre int,
+BrUceMaks int,
 straniJezik nvarchar(50),
 AktivanDN char(1)
 CONSTRAINT CHK_Kurs CHECK (AKTIVANDN in ('D','N'))

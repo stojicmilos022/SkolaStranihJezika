@@ -34,7 +34,7 @@ VALUES
 
 -- popunjavanje tabele kurs inicijalnim podatcima
 
-INSERT INTO kurs (naziv, brojucenikaTrenutno, brojUcenikaMaks, straniJezik, AktivanDN)
+INSERT INTO kurs (naziv, BrUceTre, BrUceMaks, straniJezik, AktivanDN)
 VALUES 
 ('Engleski jezik A1', 7, 8, 'Engleski', 'D'),
 ('Francuski jezik A1', 6, 8, 'Francuski', 'D'),

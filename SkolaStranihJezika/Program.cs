@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkolaStranihJezika.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,9 @@ namespace SkolaStranihJezika
     {
         static void Main(string[] args)
         {
+            MainMenuUI.MMenuUI();
 
+            Console.ReadKey();
         }
     }
 }

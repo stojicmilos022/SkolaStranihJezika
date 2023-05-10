@@ -13,10 +13,10 @@ namespace SkolaStranihJezika.Model
         int BrUceTre { get; set; }
         int BrUceMaks { get; set; }
         string straniJezik { get; set; }
-        char AktivanDN { get; set; }
+        string AktivanDN { get; set; }
 
 
-        public Kurs (string Naziv,int BrUceTre,int BrUceMaks,string straniJezik,char AktivanDN )
+        public Kurs (string Naziv,int BrUceTre,int BrUceMaks,string straniJezik,string AktivanDN )
         {
             
             this.Naziv = Naziv;
@@ -26,15 +26,30 @@ namespace SkolaStranihJezika.Model
             this.AktivanDN = AktivanDN;
         }
 
+        public Kurs(int id,string Naziv, int BrUceTre, int BrUceMaks, string straniJezik, string AktivanDN)
+        {
+            this.id=id;
+            this.Naziv = Naziv;
+            this.BrUceTre = BrUceTre;
+            this.BrUceMaks = BrUceMaks;
+            this.straniJezik = straniJezik;
+            this.AktivanDN = AktivanDN;
+        }
+
         public override string ToString()
         {
-            return "\tId : " + id + "\tNaziv kursa : " + Naziv + "\tBrojUcenika trenutno na kursu : " + BrUceTre+"\t maksimalan broj ucenika :"+BrUceMaks+
+            return "\tId : " + id + "\tNaziv kursa : " + Naziv + "\tUcenika na kursu : " + BrUceTre+"\t max broj ucenika :"+BrUceMaks+
                 "\t strani jezik :"+straniJezik+"\tKurs AktivanDN :"+AktivanDN;
         }
 
-        public string TabelarniPrikazUcenika()
+        public string TabelarniPrikazKursa()
         {
-            return string.Format("\t{0,-4} | {1,-15} | {2,-15}", id, Ime, Prezime);
+            return string.Format("\t{0,-4} | {1,-25} | {2,-15} | {3,-15} | {4,-15} | {5,-15}", id, Naziv, BrUceTre,BrUceMaks,straniJezik,AktivanDN);
+        }
+
+        public string SkracenoKurs()
+        {
+            return id + " " + Naziv;
         }
     }
 }

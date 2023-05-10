@@ -9,11 +9,18 @@ namespace SkolaStranihJezika.Model
     internal class Ucenik
     {
         int id { get; set; }
-        string Ime { get; set; }
-        string Prezime { get; set; }
+        public string Ime { get; set; }
+        public string Prezime { get; set; }
 
         public Ucenik(string ime, string prezime)
         {
+            this.Ime = ime;
+            this.Prezime = prezime;
+        }
+
+        public Ucenik(int id,string ime, string prezime)
+        {
+            this.id = id;
             this.Ime = ime;
             this.Prezime = prezime;
         }

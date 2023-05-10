@@ -8,14 +8,6 @@ namespace SkolaStranihJezika.UI
 {
     internal class UcenikUI
     {
-        internal static void UcenikDodajNovog()
-        {
-            throw new NotImplementedException();
-        }
 
-        internal static void UcenikDodajUcenikaNaKurs()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

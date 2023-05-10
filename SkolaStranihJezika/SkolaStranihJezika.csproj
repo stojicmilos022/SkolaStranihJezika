@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\ConnectionDao.cs" />
+    <Compile Include="DAO\KursDao.cs" />
+    <Compile Include="DAO\UcenikDao.cs" />
+    <Compile Include="Help\UcenikHelp.cs" />
     <Compile Include="Model\Kurs.cs" />
     <Compile Include="Model\Pohadja.cs" />
     <Compile Include="Model\Ucenik.cs" />

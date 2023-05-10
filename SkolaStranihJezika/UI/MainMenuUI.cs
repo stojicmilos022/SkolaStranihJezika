@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkolaStranihJezika.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace SkolaStranihJezika.UI
                 Console.WriteLine("\t1. Pregled svih kurseva koje skola nudi :");
                 Console.WriteLine("\t2. Dodavanje novih ucenika u sistem :");
                 Console.WriteLine("\t3. Ubacivanje postojecih ucenika na zeljeni kurs :");
+                Console.WriteLine("\t0. Izlaz iz programa...");
                 Console.WriteLine("Izaberi jednu od opcija :");
                 odluka = int.Parse(Console.ReadLine());
                 Console.Clear();
@@ -28,10 +30,10 @@ namespace SkolaStranihJezika.UI
                         Console.WriteLine("Izlaz iz programa");
                         break;
                     case 1:
-                        KursUI.KursIspisiSve();
+                        KursDao.KursIspisiSve();
                         break;
                     case 2:
-                        UcenikUI.UcenikDodajNovog();
+                        UcenikDao.UcenikDodajNovog();
                         break;
                     case 3:
                         UcenikUI.UcenikDodajUcenikaNaKurs();
