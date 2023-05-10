@@ -39,7 +39,7 @@ namespace SkolaStranihJezika.DAO
         public static void UcenikIspisiSve()
         {
             List<Ucenik> sviUcenici = UcenikDao.PreuzmiClanoveIzSql();
-            Console.WriteLine("\tSvi ucenici :");
+            Console.WriteLine("\tPregled svih ucenika :");
             Console.WriteLine("\t________________________________________________");
             Console.WriteLine("\t{0,-4} | {1,-15} | {2,-15}", "ID", "Ime", "Prezime");
             Console.WriteLine("\t________________________________________________");
@@ -55,18 +55,33 @@ namespace SkolaStranihJezika.DAO
             Ucenik novi = UcenikHelp.ProveraUnosaUcenika();
             if (novi != null)
             {
-                bool uspesno = UcenikHelp.TestDodavanjaUcenika(novi);
-
-                if (uspesno == false)
+                bool ucenikPostoji=UcenikHelp.ProveriDaliUcenikVecPostoji(novi);
+                if (ucenikPostoji == false)
                 {
-                    Console.WriteLine("Greska pri unosu clana...");
+                    bool uspesno = UcenikHelp.TestDodavanjaUcenika(novi);
+
+                    if (uspesno == false)
+                    {
+                        Console.WriteLine("Greska pri unosu clana...");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ucenik {0} je uspesno dodat", novi);
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Ucenik {0} je uspesno dodat", novi);
+                    Console.WriteLine("Ucenik vec postoji : {0} nemozete dva puta prijaviti istog ucenika",novi);
+                    return;
                 }
             }
+        }
+
+        public static void UcenikDodajUcenikaNaKurs()
+        {
+            UcenikIspisiSve();
 
         }
+        
     }
 }

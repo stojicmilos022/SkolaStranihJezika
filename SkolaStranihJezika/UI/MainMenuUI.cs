@@ -36,7 +36,7 @@ namespace SkolaStranihJezika.UI
                         UcenikDao.UcenikDodajNovog();
                         break;
                     case 3:
-                        UcenikUI.UcenikDodajUcenikaNaKurs();
+                        UcenikDao.UcenikDodajUcenikaNaKurs();
                         break;
                     default:
                         Console.WriteLine("Nepoznata komanda");

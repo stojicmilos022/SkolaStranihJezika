@@ -56,5 +56,33 @@ namespace SkolaStranihJezika.Help
             connection.Close();
             return Izvrseno;
         }
+
+        internal static bool ProveriDaliUcenikVecPostoji(Ucenik noviUcenik)
+        {
+            SqlConnection connection = ConnectionDao.NewConnection();
+
+            bool Izvrseno;
+            string Ime = noviUcenik.Ime;
+            string Prezime= noviUcenik.Prezime;
+            string sQuerry = @"select * from ucenik where ime="+"\'"+Ime+"\' and prezime="+"\'"+Prezime+ "\'";
+
+            SqlCommand cmd = new SqlCommand(sQuerry, connection);
+            //cmd.Parameters.AddWithValue("ime", noviUcenik.Ime);
+            //cmd.Parameters.AddWithValue("prezime", noviUcenik.Prezime);
+            try
+            {
+                cmd.ExecuteReader();
+                Izvrseno = true;
+            }
+            catch
+            {
+                Izvrseno = false;
+            }
+
+            connection.Close();
+            return Izvrseno;
+        }
+
+
     }
 }
