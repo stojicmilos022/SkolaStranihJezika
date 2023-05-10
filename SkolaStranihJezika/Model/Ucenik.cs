@@ -9,21 +9,29 @@ namespace SkolaStranihJezika.Model
     internal class Ucenik
     {
         int id { get; set; }
-        public string ime { get; set; }
-
-        public string prezime { get; set; }
-
+        string Ime { get; set; }
+        string Prezime { get; set; }
 
         public Ucenik(string ime, string prezime)
         {
-            this.ime = ime;
-            this.prezime = prezime;
+            this.Ime = ime;
+            this.Prezime = prezime;
         }
 
-        public override string ToString() 
+        public override string ToString()
         {
-            return " Ucenik : "+ime+" "+prezime+" ";
+            return "\tId : " + id + "\tIme : " + Ime + "\tPrezime : " + Prezime;
         }
-        
+
+        public string TabelarniPrikazUcenika()
+        {
+            return string.Format("\t{0,-4} | {1,-15} | {2,-15}", id, Ime, Prezime);
+        }
+
+        public string SkracenoUcenik()
+        {
+            return Ime + " " + Prezime;
+        }
+
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SkolaStranihJezika.UI
 {
-    internal class KursUI
+    public  class KursUI
     {
+    
     }
 }
