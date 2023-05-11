@@ -8,19 +8,31 @@ namespace SkolaStranihJezika.Model
 {
     internal class Pohadja
     {
-        int id {  get; set; }
-        public Kurs kursPohadja { get; set; }
-        public Ucenik ucenikPohadja { get; set; }
+        public int id {  get; set; }
+        public int kursPohadja { get; set; }
+        public int ucenikPohadja { get; set; }
 
-        public Pohadja(Kurs kursPohadja, Ucenik ucenikPohadja)
+
+        public Pohadja()
         {
+
+        }
+        public Pohadja(int kursPohadja, int ucenikPohadja)
+        {
+            this.kursPohadja = kursPohadja;
+            this.ucenikPohadja = ucenikPohadja;
+        }
+
+        public Pohadja(int id,int kursPohadja, int ucenikPohadja)
+        {
+            this.id = id;
             this.kursPohadja = kursPohadja;
             this.ucenikPohadja = ucenikPohadja;
         }
 
         public override string ToString()
         {
-            return "Ucenik :" + ucenikPohadja.SkracenoUcenik() + "\t pohadja kurs :" + kursPohadja.SkracenoKurs();
+            return "Ucenik :" +ucenikPohadja+ "\t pohadja kurs :" + kursPohadja;
         }
     }
 }

@@ -52,11 +52,12 @@ namespace SkolaStranihJezika.DAO
 
         public static void UcenikDodajNovog()
         {
+
             Ucenik novi = UcenikHelp.ProveraUnosaUcenika();
             if (novi != null)
             {
-                bool ucenikPostoji=UcenikHelp.ProveriDaliUcenikVecPostoji(novi);
-                if (ucenikPostoji == false)
+                Ucenik ucenikPostoji=UcenikHelp.ProveriDaliUcenikVecPostoji(novi.Ime,novi.Prezime);
+                if (ucenikPostoji == null)
                 {
                     bool uspesno = UcenikHelp.TestDodavanjaUcenika(novi);
 
@@ -66,12 +67,13 @@ namespace SkolaStranihJezika.DAO
                     }
                     else
                     {
-                        Console.WriteLine("Ucenik {0} je uspesno dodat", novi);
+                        Console.WriteLine("Ucenik {0} {1} je uspesno dodat\n", novi.Ime,novi.Prezime);
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Ucenik vec postoji : {0} nemozete dva puta prijaviti istog ucenika",novi);
+                    Console.WriteLine("Ucenik {0} {1} vec postoji unet je pod Id brojem : {2}\n" +
+                        "nije moguce uneti dva puta istog ucenika....\n",ucenikPostoji.Ime,ucenikPostoji.Prezime,ucenikPostoji.id);
                     return;
                 }
             }
@@ -79,7 +81,64 @@ namespace SkolaStranihJezika.DAO
 
         public static void UcenikDodajUcenikaNaKurs()
         {
-            UcenikIspisiSve();
+            Ucenik ucenik = UcenikHelp.PreuzmiUcenikaAkoPostoji();
+
+            Console.WriteLine(ucenik);
+
+            Kurs kurs = KursHelp.PreuzmiKursAkoPostoji();
+            if (kurs != null)
+            {
+                int pohadjaKurs = kurs.id;
+                int pohadjaUcenik = ucenik.id;
+
+                Pohadja postoji = PohadjaHelp.ProveriDaliUcenikVecPohadjajKurs(pohadjaKurs, pohadjaUcenik);
+                //
+                if (postoji == null)
+                {
+                    KursHelp.KursUpdateTrenutnoClanova(pohadjaKurs);
+                    bool uspesno = PohadjaHelp.TestDodavanjaUcenikaNaKurs(pohadjaKurs, pohadjaUcenik);
+
+                    if (uspesno == false)
+                    {
+                        Console.WriteLine("Greska pri unosu ucenika {0} {1} na kurs {2} {3} ...", ucenik.Ime, ucenik.Prezime, kurs.id, kurs.Naziv);
+                        //KursHelp.KursUpdateTrenutnoClanova(pohadjaKurs);
+                    }
+                    else
+                    {
+                        //KursHelp.KursUpdateTrenutnoClanova(pohadjaKurs);
+                        Console.WriteLine("Ucenik {0} {1} je uspesno dodat na kurs {2} {3} ...", ucenik.Ime, ucenik.Prezime, kurs.id, kurs.Naziv);
+                        //bool trenutno = KursHelp.KursUpdateTrenutnoClanova(pohadjaKurs);
+                        KursHelp.KursUpdateTrenutnoClanova(pohadjaKurs);
+
+                        /*
+                         * Console.WriteLine("Uspesno je updejtovan broj trenutnih ucenika na kursu : {0} {1} ,\n" +
+                                "Maksimalni broj ucenika je : {2} a kurs trenutno pohadja : {3} ucenika", kurs.id, kurs.Naziv, kurs.BrUceMaks, kurs.BrUceTre);
+                        */
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Ucenik vec pohadja izabrani kurs, \nnije moguce dva puta dodati istog ucenika na kurs");
+                    
+                    return;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Greska pri dodavanju ucenika na kurs \n" +
+                    "( nije moguce dodati ucenika na kurs na kome je dostignut maksimalni broj ucenika) \n ");
+                KursDao.KursIspisiSve();
+                Console.WriteLine();
+                return;
+            }
+
+
+
+
+
+
+
+
 
         }
         

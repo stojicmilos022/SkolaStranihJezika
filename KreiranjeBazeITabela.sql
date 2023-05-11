@@ -9,9 +9,11 @@ naziv nvarchar(50) not null,
 BrUceTre int,
 BrUceMaks int,
 straniJezik nvarchar(50),
-AktivanDN char(1)
+AktivanDN nvarchar(1)
 CONSTRAINT CHK_Kurs CHECK (AKTIVANDN in ('D','N'))
 )
+
+alter table Kurs alter column AktivanDN nvarchar(2)
 --drop table ucenik
 create table Ucenik
 (

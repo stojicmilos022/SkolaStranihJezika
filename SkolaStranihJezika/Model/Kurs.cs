@@ -8,10 +8,10 @@ namespace SkolaStranihJezika.Model
 {
     internal class Kurs
     {
-        int id { get; set; }
-        string Naziv { get; set; }
-        int BrUceTre { get; set; }
-        int BrUceMaks { get; set; }
+        public int id { get; set; }
+        public string Naziv { get; set; }
+        public int BrUceTre { get; set; }
+        public int BrUceMaks { get; set; }
         string straniJezik { get; set; }
         string AktivanDN { get; set; }
 
