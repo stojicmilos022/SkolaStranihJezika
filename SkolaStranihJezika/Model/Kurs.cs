@@ -12,8 +12,8 @@ namespace SkolaStranihJezika.Model
         public string Naziv { get; set; }
         public int BrUceTre { get; set; }
         public int BrUceMaks { get; set; }
-        string straniJezik { get; set; }
-        string AktivanDN { get; set; }
+        public string straniJezik { get; set; }
+        public string AktivanDN { get; set; }
 
 
         public Kurs (string Naziv,int BrUceTre,int BrUceMaks,string straniJezik,string AktivanDN )

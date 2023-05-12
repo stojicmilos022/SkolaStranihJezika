@@ -1,7 +1,9 @@
-﻿using SkolaStranihJezika.Model;
+﻿using SkolaStranihJezika.Help;
+using SkolaStranihJezika.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,5 +55,31 @@ namespace SkolaStranihJezika.DAO
             }
             Console.WriteLine();
         }
+
+        internal static void KursIspisiSveZaZeljeniJezik()
+        {
+            List<Kurs> sviKurseviZaJezik = PreuzmiKursIzSql();
+            Console.WriteLine();
+            Console.WriteLine("Unesi jezik za pretragu kurseva:");
+            string tempJezik = Console.ReadLine();
+            Console.WriteLine("\tSvi kursevi u skoli na kojima se uci : {0}",tempJezik);
+            Console.WriteLine("\t_____________________________________________________________________________________________________________");
+            Console.WriteLine("\t{0,-4} | {1,-25} | {2,-15} | {3,-15} | {4,-15} | {5,-15}", "Id", "Naziv", "Pohadja. ucenika", "Max ucenika", "strani jezik", "AktivanDN");
+            Console.WriteLine("\t_____________________________________________________________________________________________________________");
+
+            foreach (Kurs k in sviKurseviZaJezik)
+            {
+                string temp = k.straniJezik;
+                //bool isti = string.Equals(tempJezik, temp, StringComparison.OrdinalIgnoreCase);
+                bool sadrzi = temp.IndexOf(tempJezik, StringComparison.OrdinalIgnoreCase) >= 0;
+                if (sadrzi==true)
+                {
+                    Console.WriteLine(k.TabelarniPrikazKursa());
+                }
+                else { continue; }
+            }
+
+        }
+
     }
 }
