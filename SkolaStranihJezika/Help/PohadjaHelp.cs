@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SkolaStranihJezika.Help
 {
-    internal class PohadjaHelp
+    public class PohadjaHelp
     {
         internal static Pohadja ProveriDaliUcenikVecPohadjajKurs(int kursPohadja,int ucenikPohadja)
         {

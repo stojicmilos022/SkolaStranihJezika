@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SkolaStranihJezika.Model
 {
-    internal class Pohadja
+    public class Pohadja
     {
         public int id {  get; set; }
         public int kursPohadja { get; set; }

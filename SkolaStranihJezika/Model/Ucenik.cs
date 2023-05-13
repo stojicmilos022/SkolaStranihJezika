@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SkolaStranihJezika.Model
 {
-    internal class Ucenik
+    public class Ucenik
     {
         public int id { get; set; }
         public string Ime { get; set; }

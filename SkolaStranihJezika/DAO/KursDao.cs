@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Linq;
+using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -79,6 +81,25 @@ namespace SkolaStranihJezika.DAO
                 else { continue; }
             }
 
+        }
+
+        public static void KursIzmenaMaksimalnogBrojaUcenika()
+        {
+            Kurs kurs = KursHelp.PreuzmiKursAkoPostojiSviKursevi();
+            int kursId = kurs.id;
+            bool izvrseno=KursHelp.KursIzmenaMaksimalnogBrojaUcenikaHelp(kursId);
+
+            if (izvrseno == true)
+            {
+                Console.WriteLine("Uspesno je izmenjen broj maksimalnih ucenika na kursu : {0} {1}", kurs.id,kurs.Naziv);
+            }
+            else
+            {
+                Console.WriteLine("Greska prilikom maximalnog broja ucenika na kursu : {0} {1}", kurs.id, kurs.Naziv);
+                
+            }
+            return;
+            
         }
 
     }

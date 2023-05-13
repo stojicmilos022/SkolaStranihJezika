@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SkolaStranihJezika.Help
 {
-    internal class UcenikHelp
+    public class UcenikHelp
     {
         internal static Ucenik ProveraUnosaUcenika()
         {
@@ -57,7 +57,7 @@ namespace SkolaStranihJezika.Help
             return Izvrseno;
         }
 
-        internal static Ucenik ProveriDaliUcenikVecPostoji(string ime,string prezime)
+        public static Ucenik ProveriDaliUcenikVecPostoji(string ime,string prezime)
         {
             /*
             SqlConnection connection = ConnectionDao.NewConnection();
@@ -120,6 +120,33 @@ namespace SkolaStranihJezika.Help
             Console.WriteLine("Unesite id ucenika :");
             string unetiTekst = Console.ReadLine();
             if (int.TryParse(unetiTekst, out userInput) == false)
+            {
+                Console.WriteLine("Id nije integer");
+            }
+            else
+            {
+                userInput = int.Parse(unetiTekst);
+
+                pronadji = UcenikPreuzmiPoId(userInput);
+
+                if (pronadji == null)
+                {
+                    Console.WriteLine("Nepostojeci clan");
+                }
+            }
+
+            return pronadji;
+        }
+
+        public static Ucenik PreuzmiUcenikaAkoPostojiPoId(int Id)
+        {
+            Ucenik pronadji = null;
+            int userInput=Id;
+            Console.Clear();
+            UcenikDao.UcenikIspisiSve();
+            Console.WriteLine("Unesite id ucenika :");
+            string unetiTekst = Console.ReadLine();
+            if (int.TryParse(unetiTekst, out Id) == false)
             {
                 Console.WriteLine("Id nije integer");
             }

@@ -20,6 +20,8 @@ namespace SkolaStranihJezika.UI
                 Console.WriteLine("\t2. Dodavanje novih ucenika u sistem :");
                 Console.WriteLine("\t3. Ubacivanje postojecih ucenika na zeljeni kurs :");
                 Console.WriteLine("\t4. Ispis svih kurseva za izabrani jezik :");
+                Console.WriteLine("\t5. Izmena maksimalnog broja ucenika za izabrani kurs :");
+                Console.WriteLine("\t6. Snimanje kursta u pdf :");
                 Console.WriteLine("\t0. Izlaz iz programa...");
                 Console.WriteLine("Izaberi jednu od opcija :");
                 odluka = int.Parse(Console.ReadLine());
@@ -41,6 +43,13 @@ namespace SkolaStranihJezika.UI
                         break;
                     case 4:
                         KursDao.KursIspisiSveZaZeljeniJezik();
+                        break;
+                    case 5:
+                        KursDao.KursIzmenaMaksimalnogBrojaUcenika();
+                        break;
+
+                    case 6:
+                        IspisUPDF.IzvozPdf();
                         break;
                     default:
                         Console.WriteLine("Nepoznata komanda");
